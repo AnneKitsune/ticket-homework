@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/media/jojolepro/shared/share/Prog/TicketBackend/web/welcomePrimefaces.xhtml</file>
-            <file>file:/media/jojolepro/shared/share/Prog/TicketBackend/src/java/hibernate.cfg.xml</file>
-            <file>file:/media/jojolepro/shared/share/Prog/TicketBackend/web/index.xhtml</file>
+            <file>file:/home/jojolepro/share/Prog/TicketHomework/TicketBackend/src/java/com/jojoalex/ticket/model/dao/HibernateUtil.java</file>
+            <file>file:/home/jojolepro/share/Prog/TicketHomework/TicketBackend/src/java/com/jojoalex/ticket/controller/endpoints/TicketFacadeRest.java</file>
+            <file>file:/home/jojolepro/share/Prog/TicketHomework/TicketBackend/src/java/hibernate.cfg.xml</file>
+            <file>file:/home/jojolepro/share/Prog/TicketHomework/TicketBackend/web/WEB-INF/web.xml</file>
+            <file>file:/home/jojolepro/share/Prog/TicketHomework/TicketBackend/src/java/com/jojoalex/ticket/controller/filters/AuthentificationFilter.java</file>
+            <file>file:/home/jojolepro/share/Prog/TicketHomework/TicketBackend/src/java/com/jojoalex/ticket/controller/endpoints/UserFacadeRest.java</file>
+            <file>file:/home/jojolepro/share/Prog/TicketHomework/TicketBackend/src/java/hibernate.reveng.xml</file>
         </group>
     </open-files>
 </project-private>

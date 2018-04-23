@@ -46,5 +46,9 @@ Contributor(s):
     <property name="hibernate.connection.url">jdbc:mysql://raidable.ddns.net:3306/tickets?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">ticket</property>
     <property name="hibernate.connection.password">ticketspassword</property>
+    <mapping class="com.jojoalex.ticket.model.entities.User"/>
+    <mapping class="com.jojoalex.ticket.model.entities.Client"/>
+    <mapping class="com.jojoalex.ticket.model.entities.TicketUpdate"/>
+    <mapping class="com.jojoalex.ticket.model.entities.Ticket"/>
   </session-factory>
 </hibernate-configuration>
