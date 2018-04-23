@@ -1,2 +1,5 @@
 # ticket-homework
-hmmmmmmm
+Simple ticket system.
+# hmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+# hmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+# hmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
