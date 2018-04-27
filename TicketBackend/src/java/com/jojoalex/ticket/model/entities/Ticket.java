@@ -1,5 +1,5 @@
 package com.jojoalex.ticket.model.entities;
-// Generated 23-Apr-2018 2:15:56 PM by Hibernate Tools 4.3.1
+// Generated 27-Apr-2018 2:24:39 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -13,6 +13,8 @@ import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -25,12 +27,23 @@ import javax.persistence.TemporalType;
 @Table(name="Ticket"
     ,catalog="tickets"
 )
+@NamedQueries({
+    @NamedQuery(
+            name = "findTicketById",
+            query = "from Ticket t where t.id = :id"
+    ),
+    @NamedQuery(
+            name = "findAllTickets",
+            query = "from Ticket t"
+    )
+})
 public class Ticket  implements java.io.Serializable {
 
 
      private Integer id;
-     private Client client;
-     private User user;
+     private User userByFor;
+     private User userByClosedBy;
+     private User userByOpenedBy;
      private String title;
      private String content;
      private Date createdAt;
@@ -42,16 +55,18 @@ public class Ticket  implements java.io.Serializable {
     }
 
 	
-    public Ticket(Client client, String title, String content, Date createdAt, String priority) {
-        this.client = client;
+    public Ticket(User userByFor, User userByOpenedBy, String title, String content, Date createdAt, String priority) {
+        this.userByFor = userByFor;
+        this.userByOpenedBy = userByOpenedBy;
         this.title = title;
         this.content = content;
         this.createdAt = createdAt;
         this.priority = priority;
     }
-    public Ticket(Client client, User user, String title, String content, Date createdAt, Date closedAt, String priority, Set<TicketUpdate> ticketUpdates) {
-       this.client = client;
-       this.user = user;
+    public Ticket(User userByFor, User userByClosedBy, User userByOpenedBy, String title, String content, Date createdAt, Date closedAt, String priority, Set<TicketUpdate> ticketUpdates) {
+       this.userByFor = userByFor;
+       this.userByClosedBy = userByClosedBy;
+       this.userByOpenedBy = userByOpenedBy;
        this.title = title;
        this.content = content;
        this.createdAt = createdAt;
@@ -73,23 +88,33 @@ public class Ticket  implements java.io.Serializable {
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="opened_by", nullable=false)
-    public Client getClient() {
-        return this.client;
+    @JoinColumn(name="for", nullable=false)
+    public User getUserByFor() {
+        return this.userByFor;
     }
     
-    public void setClient(Client client) {
-        this.client = client;
+    public void setUserByFor(User userByFor) {
+        this.userByFor = userByFor;
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="closed_by")
-    public User getUser() {
-        return this.user;
+    public User getUserByClosedBy() {
+        return this.userByClosedBy;
     }
     
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserByClosedBy(User userByClosedBy) {
+        this.userByClosedBy = userByClosedBy;
+    }
+
+@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="opened_by", nullable=false)
+    public User getUserByOpenedBy() {
+        return this.userByOpenedBy;
+    }
+    
+    public void setUserByOpenedBy(User userByOpenedBy) {
+        this.userByOpenedBy = userByOpenedBy;
     }
 
     

@@ -1,5 +1,5 @@
 package com.jojoalex.ticket.model.entities;
-// Generated 23-Apr-2018 2:15:56 PM by Hibernate Tools 4.3.1
+// Generated 27-Apr-2018 2:24:39 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -11,6 +11,8 @@ import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -22,6 +24,16 @@ import javax.persistence.TemporalType;
 @Table(name="ticket_update"
     ,catalog="tickets"
 )
+@NamedQueries({
+    @NamedQuery(
+            name = "findTicketUpdateById",
+            query = "from TicketUpdate t where t.id = :id"
+    ),
+    @NamedQuery(
+            name = "findAllTicketUpdate",
+            query = "from TicketUpdate t"
+    )
+})
 public class TicketUpdate  implements java.io.Serializable {
 
 

@@ -6,6 +6,7 @@
 package com.jojoalex.ticket.model.dao;
 
 import com.jojoalex.ticket.model.entities.Ticket;
+import com.jojoalex.ticket.model.entities.TicketUpdate;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -27,9 +28,17 @@ public class TicketDAO implements Serializable {
         sessionFactory = HibernateUtil.getSessionFactory();
     }
 
-    public List<Ticket> findListOfTickets() {
+    public ArrayList<Ticket> findListOfTickets() {
         Session session = sessionFactory.openSession();
-        List<Ticket> listOfTickets = session.getNamedQuery("findAllTickets")
+        ArrayList<Ticket> listOfTickets = (ArrayList<Ticket>)session.getNamedQuery("findAllTickets")
+                .list();
+        session.close();
+        return listOfTickets;
+    }
+    
+    public ArrayList<TicketUpdate> findListOfTicketUpdate() {
+        Session session = sessionFactory.openSession();
+        ArrayList<TicketUpdate> listOfTickets = (ArrayList<TicketUpdate>)session.getNamedQuery("findAllTicketUpdate")
                 .list();
         session.close();
         return listOfTickets;

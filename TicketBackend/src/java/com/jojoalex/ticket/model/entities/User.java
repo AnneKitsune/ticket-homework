@@ -1,5 +1,5 @@
 package com.jojoalex.ticket.model.entities;
-// Generated 23-Apr-2018 2:15:56 PM by Hibernate Tools 4.3.1
+// Generated 27-Apr-2018 2:24:39 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -10,8 +10,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -24,12 +22,6 @@ import javax.persistence.UniqueConstraint;
     ,catalog="tickets"
     , uniqueConstraints = @UniqueConstraint(columnNames="email") 
 )
-@NamedQueries({
-    @NamedQuery(
-            name = "findUserByUserNameAndPassword",
-            query = "from User u where u.username = :userName and password=:password"
-    )
-})
 public class User  implements java.io.Serializable {
 
 
@@ -38,28 +30,32 @@ public class User  implements java.io.Serializable {
      private String password;
      private String email;
      private boolean admin;
+     private String phone;
+     private Set<Ticket> ticketsForFor = new HashSet<Ticket>(0);
+     private Set<Ticket> ticketsForClosedBy = new HashSet<Ticket>(0);
      private Set<TicketUpdate> ticketUpdates = new HashSet<TicketUpdate>(0);
-     private Set<Ticket> tickets = new HashSet<Ticket>(0);
-     private Set<Client> clients = new HashSet<Client>(0);
+     private Set<Ticket> ticketsForOpenedBy = new HashSet<Ticket>(0);
 
     public User() {
     }
 
 	
-    public User(String fullname, String password, String email, boolean admin) {
+    public User(String fullname, String email, boolean admin, String phone) {
         this.fullname = fullname;
-        this.password = password;
         this.email = email;
         this.admin = admin;
+        this.phone = phone;
     }
-    public User(String fullname, String password, String email, boolean admin, Set<TicketUpdate> ticketUpdates, Set<Ticket> tickets, Set<Client> clients) {
+    public User(String fullname, String password, String email, boolean admin, String phone, Set<Ticket> ticketsForFor, Set<Ticket> ticketsForClosedBy, Set<TicketUpdate> ticketUpdates, Set<Ticket> ticketsForOpenedBy) {
        this.fullname = fullname;
        this.password = password;
        this.email = email;
        this.admin = admin;
+       this.phone = phone;
+       this.ticketsForFor = ticketsForFor;
+       this.ticketsForClosedBy = ticketsForClosedBy;
        this.ticketUpdates = ticketUpdates;
-       this.tickets = tickets;
-       this.clients = clients;
+       this.ticketsForOpenedBy = ticketsForOpenedBy;
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
@@ -85,7 +81,7 @@ public class User  implements java.io.Serializable {
     }
 
     
-    @Column(name="password", nullable=false, length=200)
+    @Column(name="password", length=200)
     public String getPassword() {
         return this.password;
     }
@@ -114,6 +110,34 @@ public class User  implements java.io.Serializable {
         this.admin = admin;
     }
 
+    
+    @Column(name="phone", nullable=false)
+    public String getPhone() {
+        return this.phone;
+    }
+    
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+@OneToMany(fetch=FetchType.LAZY, mappedBy="userByFor")
+    public Set<Ticket> getTicketsForFor() {
+        return this.ticketsForFor;
+    }
+    
+    public void setTicketsForFor(Set<Ticket> ticketsForFor) {
+        this.ticketsForFor = ticketsForFor;
+    }
+
+@OneToMany(fetch=FetchType.LAZY, mappedBy="userByClosedBy")
+    public Set<Ticket> getTicketsForClosedBy() {
+        return this.ticketsForClosedBy;
+    }
+    
+    public void setTicketsForClosedBy(Set<Ticket> ticketsForClosedBy) {
+        this.ticketsForClosedBy = ticketsForClosedBy;
+    }
+
 @OneToMany(fetch=FetchType.LAZY, mappedBy="user")
     public Set<TicketUpdate> getTicketUpdates() {
         return this.ticketUpdates;
@@ -123,22 +147,13 @@ public class User  implements java.io.Serializable {
         this.ticketUpdates = ticketUpdates;
     }
 
-@OneToMany(fetch=FetchType.LAZY, mappedBy="user")
-    public Set<Ticket> getTickets() {
-        return this.tickets;
+@OneToMany(fetch=FetchType.LAZY, mappedBy="userByOpenedBy")
+    public Set<Ticket> getTicketsForOpenedBy() {
+        return this.ticketsForOpenedBy;
     }
     
-    public void setTickets(Set<Ticket> tickets) {
-        this.tickets = tickets;
-    }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="user")
-    public Set<Client> getClients() {
-        return this.clients;
-    }
-    
-    public void setClients(Set<Client> clients) {
-        this.clients = clients;
+    public void setTicketsForOpenedBy(Set<Ticket> ticketsForOpenedBy) {
+        this.ticketsForOpenedBy = ticketsForOpenedBy;
     }
 
 
