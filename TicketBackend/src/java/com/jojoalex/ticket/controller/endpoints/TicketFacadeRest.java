@@ -80,7 +80,7 @@ public class TicketFacadeRest {
     @Path("close/{id}")
     public void closeTicket(@PathParam("id") int id,@Context HttpServletRequest req){
         User u = TokenStore.userFromRequest(req);
-        if(u == null)
+        if(u == null || !u.isAdmin())
             return;
         
         Ticket t = ticketDAO.getTicketByID((short)id);
