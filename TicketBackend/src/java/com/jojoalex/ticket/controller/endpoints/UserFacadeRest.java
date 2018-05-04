@@ -6,6 +6,7 @@
 package com.jojoalex.ticket.controller.endpoints;
 
 import com.jojoalex.ticket.controller.utils.EncryptionException;
+import com.jojoalex.ticket.controller.utils.EncryptionUtils;
 import com.jojoalex.ticket.controller.utils.RESTUtils;
 import com.jojoalex.ticket.controller.utils.SessionUtils;
 import com.jojoalex.ticket.controller.utils.TokenStore;
@@ -19,8 +20,10 @@ import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.HeaderParam;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Context;
@@ -105,8 +108,25 @@ public class UserFacadeRest {
         return RESTUtils.JSONFactory.toJson(o);
     }
     
-    public void addClient(){
-        
+    @POST
+    @Path("new")
+    public String addUser(@Context HttpServletRequest req,@FormParam("admin") boolean admin,@FormParam("email") String email,
+            @FormParam("fullname") String fullname,@FormParam("password") String password,@FormParam("phone") String phone) throws EncryptionException{
+        User u = TokenStore.userFromRequest(req);
+        if(u != null && u.isAdmin()){
+            EncryptionUtils eu = new EncryptionUtils();
+            User u2 = new User();
+            u2.setAdmin(admin);
+            u2.setEmail(email);
+            u2.setFullname(fullname);
+            u2.setPassword(eu.encrypt(password));
+            u2.setPhone(phone);
+            
+            userDAO.createUser(u2);
+            return "OK";
+        }else{
+            return "Not authorised";
+        }
     }
 
 }

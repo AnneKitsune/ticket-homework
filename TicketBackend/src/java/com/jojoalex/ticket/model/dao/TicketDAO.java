@@ -7,8 +7,10 @@ package com.jojoalex.ticket.model.dao;
 
 import com.jojoalex.ticket.model.entities.Ticket;
 import com.jojoalex.ticket.model.entities.TicketUpdate;
+import com.jojoalex.ticket.model.entities.User;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import org.hibernate.Criteria;
@@ -44,24 +46,25 @@ public class TicketDAO implements Serializable {
         return listOfTickets;
     }
     
-    /*public void saveTicket(Ticket aTicket, boolean isNew) {
+    public void createTicket(Ticket t, int forUser,int openedBy) {
         Session session = sessionFactory.openSession();
-        if (isNew) {
-            aTicket.setClient((Store) session.load(Store.class, new Integer("1")));
-            aTicket.setUser();
-            aTicket.setTicketUpdates();
-            aTicket.setStore((Store) session.load(Store.class, new Byte("1")));
-            aTicket.setAddress((Address) session.load(Address.class, new Short("1")));
-            aTicket.setCreateDate(new Date());
-            session.persist(aTicket);
-        } else {
-            aTicket.setLastUpdate(new Date());
-            session.merge(aTicket);
-
-        }
+        t.setUserByFor((User)session.load(User.class,forUser));
+        t.setCreatedAt(Date.from(Calendar.getInstance().toInstant()));
+        t.setUserByOpenedBy((User)session.load(User.class,openedBy));
+        
+        session.persist(t);
         session.flush();
         session.close();
-    }*/
+    }
+    
+    public void createTicketUpdate(TicketUpdate t, int ticketid) {
+        Session session = sessionFactory.openSession();
+        t.setTicket((Ticket)session.load(Ticket.class,ticketid));
+        
+        session.persist(t);
+        session.flush();
+        session.close();
+    }
     
     public void updateTicket(Ticket t) {
         Session session = sessionFactory.openSession();

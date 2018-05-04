@@ -17,8 +17,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.HeaderParam;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Context;
@@ -127,8 +129,47 @@ public class TicketFacadeRest {
         return RESTUtils.JSONFactory.toJson(new TicketDTO(t));
     }
     
-    
-    public void createTicket(){
+    @GET
+    @Path("priority/{priority}")
+    public String ticketByPriority(@PathParam("priority") String priority){
+        ArrayList<Ticket> t = ticketDAO.findListOfTickets();
+        ArrayList<TicketDTO> o = new ArrayList<>();
+        for(Ticket ti : t){
+            //Normale, Importante, Critique
+            if(ti.getPriority().equals(priority)){
+                o.add(new TicketDTO(ti));
+            }
+        }
         
+        return RESTUtils.JSONFactory.toJson(o);
+    }
+    
+    @POST
+    @Path("new")
+    public void createTicket(@Context HttpServletRequest req,@FormParam("content") String content,@FormParam("priority") String priority,
+            @FormParam("title") String title,@FormParam("for_user") int forUser){
+        User u = TokenStore.userFromRequest(req);
+        if(u != null){
+            Ticket t = new Ticket();
+            t.setContent(content);
+            t.setPriority(priority);
+            t.setTitle(title);
+            int openedBy = u.getId();
+            ticketDAO.createTicket(t, forUser, openedBy);
+        }
+    }
+    
+    
+    @POST
+    @Path("postmsg")
+    public void createTicketMsg(@Context HttpServletRequest req,@FormParam("content") String content,@FormParam("ticketid") int ticketid){
+        User u = TokenStore.userFromRequest(req);
+        if(u != null){
+            TicketUpdate t = new TicketUpdate();
+            t.setContent(content);
+            t.setCreatedAt(Date.from(Calendar.getInstance().toInstant()));
+            t.setUser(u);
+            ticketDAO.createTicketUpdate(t, ticketid);
+        }
     }
 }
