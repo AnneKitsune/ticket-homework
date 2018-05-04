@@ -62,6 +62,13 @@ public class TicketDAO implements Serializable {
         session.flush();
         session.close();
     }*/
+    
+    public void updateTicket(Ticket t) {
+        Session session = sessionFactory.openSession();
+        session.merge(t);
+        session.flush();
+        session.close();
+    }
 
     public Ticket getTicketByID(Short id) {
         Session session = sessionFactory.openSession();

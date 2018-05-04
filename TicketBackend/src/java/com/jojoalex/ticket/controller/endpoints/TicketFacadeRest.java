@@ -6,16 +6,22 @@
 package com.jojoalex.ticket.controller.endpoints;
 
 import com.jojoalex.ticket.controller.utils.RESTUtils;
+import com.jojoalex.ticket.controller.utils.TokenStore;
 import com.jojoalex.ticket.model.dao.TicketDAO;
 import com.jojoalex.ticket.model.dto.TicketDTO;
 import com.jojoalex.ticket.model.dto.TicketUpdateDTO;
 import com.jojoalex.ticket.model.entities.Ticket;
 import com.jojoalex.ticket.model.entities.TicketUpdate;
+import com.jojoalex.ticket.model.entities.User;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
 import javax.ws.rs.HeaderParam;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.core.Context;
 
 /**
  *
@@ -69,6 +75,21 @@ public class TicketFacadeRest {
     }
     
     @GET
+    @Path("close/{id}")
+    public void closeTicket(@PathParam("id") int id,@Context HttpServletRequest req){
+        User u = TokenStore.userFromRequest(req);
+        if(u == null)
+            return;
+        
+        Ticket t = ticketDAO.getTicketByID((short)id);
+        if(t != null){
+            t.setClosedAt(Date.from(Calendar.getInstance().toInstant()));
+            t.setUserByClosedBy(u);
+            ticketDAO.updateTicket(t);
+        }
+    }
+    
+    @GET
     @Path("user/{userid}")
     public String ticketForUser(@PathParam("userid") int userid){
         ArrayList<Ticket> t = ticketDAO.findListOfTickets();
@@ -106,16 +127,8 @@ public class TicketFacadeRest {
         return RESTUtils.JSONFactory.toJson(new TicketDTO(t));
     }
     
+    
     public void createTicket(){
         
     }
-    
-    public void getTicket(int id){
-        
-    }
-    
-    public void closeTicket(int id){
-        
-    }
-
 }

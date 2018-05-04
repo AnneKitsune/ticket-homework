@@ -7,8 +7,10 @@ package com.jojoalex.ticket.model.dao;
 
 import com.jojoalex.ticket.controller.utils.EncryptionException;
 import com.jojoalex.ticket.controller.utils.EncryptionUtils;
+import com.jojoalex.ticket.model.entities.Ticket;
 import com.jojoalex.ticket.model.entities.User;
 import java.io.Serializable;
+import java.util.ArrayList;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -47,6 +49,14 @@ public class UserDAO implements Serializable {
 
         session.close();
         return foundUser;
+    }
+    
+    public ArrayList<User> getUsers() {
+        Session session = sessionFactory.openSession();
+        ArrayList<User> ls = (ArrayList<User>)session.createQuery("from User")
+                .list();
+        session.close();
+        return ls;
     }
 
 }
