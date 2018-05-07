@@ -5,25 +5,73 @@
  */
 package com.jojoalex.ticket.bean;
 
+import com.jojoalex.ticket.controller.utils.EncryptionException;
+import com.jojoalex.ticket.controller.utils.SessionUtils;
+import com.jojoalex.ticket.model.dao.UserDAO;
+import com.jojoalex.ticket.model.entities.User;
+import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Alexis-Laptop
  */
-@Named(value = "loginView")
+@Named(value = "loginview")
 @Dependent
+@ViewScoped
 public class LoginView {
 
-    /**
-     * Creates a new instance of LoginView
-     */
+    private String username;
+    private String password;
+    
+    private UserDAO userDAO;
+    
     public LoginView() {
     }
     
-    public void connect()
-    {
-        
+    @PostConstruct
+    public void init() {
+        userDAO = new UserDAO();
     }
+    
+    public String connect() {
+        try {
+            User aUser = userDAO.getUserByUserNameAndPassword(username, password);
+            //System.out.println(aUser.getFullname());
+            if (aUser != null) {
+                HttpSession session = SessionUtils.getSession();
+                session.setAttribute("user", aUser);
+                return "index?faces-redirect=true";
+            } else {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Échec de la connexion", "Mauvais nom d'utilisateur ou mot de passe"));
+
+            }
+        } catch (EncryptionException ex) {
+           FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Échec de la connexion", "Problem de lors de l'encodage du mot de passe"));
+        }
+        return "login";
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
+    
 }
