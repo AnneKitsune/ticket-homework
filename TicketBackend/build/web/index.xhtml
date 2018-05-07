@@ -1,14 +1,36 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Ticket-Homework</title>
     </h:head>
     <h:body>
-        Hello from Facelets
-        <br />
-        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
+        <h1>Ticket-Homework</h1>
+        <h:form>
+            <p:panel id="panel" header="Register">
+
+                <p:focus context="panel"/>
+
+                <p:messages />
+
+                <h:panelGrid columns="3">
+                    <p:outputLabel for="username" value="Username" />
+                    <p:inputText id="username" value="" required="true" label="Username">
+                        <f:validateLength minimum="2" />
+                    </p:inputText>
+                    <p:message for="username" />
+
+                    <p:outputLabel for="password" value="Password" />
+                    <p:password id="password" value="" required="true" label="Password" />
+                    <p:message for="password" />
+                </h:panelGrid>
+
+                <p:commandButton id="submitButton" value="Connect" update="@parent" actionListener="#{loginview.connect}" />
+            </p:panel>
+        </h:form>
     </h:body>
 </html>
 
