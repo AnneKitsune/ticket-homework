@@ -30,7 +30,7 @@ public class UserDAO implements Serializable {
         String encryptPassword = (new EncryptionUtils()).encrypt(password);
 
         User aUser = (User) session.getNamedQuery("findUserByUserNameAndPassword")
-                .setString("userName", userName)
+                .setString("username", userName)
                 .setString("password", encryptPassword)
                 .uniqueResult();
         session.close();

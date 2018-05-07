@@ -48,11 +48,12 @@ public class TicketDAO implements Serializable {
     
     public void createTicket(Ticket t, int forUser,int openedBy) {
         Session session = sessionFactory.openSession();
-        t.setUserByFor((User)session.load(User.class,forUser));
+        t.setUserByForUser((User)session.load(User.class,forUser));
         t.setCreatedAt(Date.from(Calendar.getInstance().toInstant()));
         t.setUserByOpenedBy((User)session.load(User.class,openedBy));
-        
+        session.beginTransaction();
         session.persist(t);
+        session.getTransaction().commit();
         session.flush();
         session.close();
     }

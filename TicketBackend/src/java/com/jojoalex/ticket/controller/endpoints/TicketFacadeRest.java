@@ -97,7 +97,7 @@ public class TicketFacadeRest {
         ArrayList<Ticket> t = ticketDAO.findListOfTickets();
         ArrayList<TicketDTO> o = new ArrayList<>();
         for(Ticket ti : t){
-            if(ti.getUserByFor().getId() == userid){
+            if(ti.getUserByForUser().getId() == userid){
                 o.add(new TicketDTO(ti));
             }
         }
@@ -146,7 +146,7 @@ public class TicketFacadeRest {
     
     @POST
     @Path("new")
-    public void createTicket(@Context HttpServletRequest req,@FormParam("content") String content,@FormParam("priority") String priority,
+    public String createTicket(@Context HttpServletRequest req,@FormParam("content") String content,@FormParam("priority") String priority,
             @FormParam("title") String title,@FormParam("for_user") int forUser){
         User u = TokenStore.userFromRequest(req);
         if(u != null){
@@ -156,7 +156,9 @@ public class TicketFacadeRest {
             t.setTitle(title);
             int openedBy = u.getId();
             ticketDAO.createTicket(t, forUser, openedBy);
+            return "OK";
         }
+        return "Invalid or missing login token.";
     }
     
     
