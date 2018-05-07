@@ -47,8 +47,12 @@ public class UserFacadeRest {
     public String login(@Context HttpServletResponse ans,
             @HeaderParam("username") String userName,
             @HeaderParam("password") String password) throws EncryptionException {
+        
+        if(userName == null || userName.isEmpty() || password == null || password.isEmpty())
+            return "Missing credentials";
+        
         User user = userDAO.getUserByUserNameAndPassword(userName, password);
-        if (userDAO.getUserByUserNameAndPassword(userName, password) != null) {
+        if (user != null) {
             String t = TokenStore.createToken(user);
             ans.setHeader("token", t);
             return "OK";

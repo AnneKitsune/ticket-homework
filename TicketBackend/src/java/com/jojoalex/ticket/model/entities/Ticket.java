@@ -1,5 +1,5 @@
 package com.jojoalex.ticket.model.entities;
-// Generated 27-Apr-2018 2:24:39 PM by Hibernate Tools 4.3.1
+// Generated 7-May-2018 1:30:40 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -27,21 +27,11 @@ import javax.persistence.TemporalType;
 @Table(name="Ticket"
     ,catalog="tickets"
 )
-@NamedQueries({
-    @NamedQuery(
-            name = "findTicketById",
-            query = "from Ticket t where t.id = :id"
-    ),
-    @NamedQuery(
-            name = "findAllTickets",
-            query = "from Ticket t"
-    )
-})
 public class Ticket  implements java.io.Serializable {
 
 
      private Integer id;
-     private User userByFor;
+     private User userByForUser;
      private User userByClosedBy;
      private User userByOpenedBy;
      private String title;
@@ -55,16 +45,16 @@ public class Ticket  implements java.io.Serializable {
     }
 
 	
-    public Ticket(User userByFor, User userByOpenedBy, String title, String content, Date createdAt, String priority) {
-        this.userByFor = userByFor;
+    public Ticket(User userByForUser, User userByOpenedBy, String title, String content, Date createdAt, String priority) {
+        this.userByForUser = userByForUser;
         this.userByOpenedBy = userByOpenedBy;
         this.title = title;
         this.content = content;
         this.createdAt = createdAt;
         this.priority = priority;
     }
-    public Ticket(User userByFor, User userByClosedBy, User userByOpenedBy, String title, String content, Date createdAt, Date closedAt, String priority, Set<TicketUpdate> ticketUpdates) {
-       this.userByFor = userByFor;
+    public Ticket(User userByForUser, User userByClosedBy, User userByOpenedBy, String title, String content, Date createdAt, Date closedAt, String priority, Set<TicketUpdate> ticketUpdates) {
+       this.userByForUser = userByForUser;
        this.userByClosedBy = userByClosedBy;
        this.userByOpenedBy = userByOpenedBy;
        this.title = title;
@@ -88,13 +78,13 @@ public class Ticket  implements java.io.Serializable {
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="for", nullable=false)
-    public User getUserByFor() {
-        return this.userByFor;
+    @JoinColumn(name="for_user", nullable=false)
+    public User getUserByForUser() {
+        return this.userByForUser;
     }
     
-    public void setUserByFor(User userByFor) {
-        this.userByFor = userByFor;
+    public void setUserByForUser(User userByForUser) {
+        this.userByForUser = userByForUser;
     }
 
 @ManyToOne(fetch=FetchType.LAZY)

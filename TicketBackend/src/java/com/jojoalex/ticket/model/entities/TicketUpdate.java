@@ -1,5 +1,5 @@
 package com.jojoalex.ticket.model.entities;
-// Generated 27-Apr-2018 2:24:39 PM by Hibernate Tools 4.3.1
+// Generated 7-May-2018 1:30:40 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
