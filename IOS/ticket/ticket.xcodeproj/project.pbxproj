@@ -7,17 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D114E9E920964E5C0022ACD6 /* ClientTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D114E9E820964E5C0022ACD6 /* ClientTableViewController.swift */; };
+		D114E9E920964E5C0022ACD6 /* TicketsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D114E9E820964E5C0022ACD6 /* TicketsTableViewController.swift */; };
 		D117B13A2095084300613197 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D117B1392095084300613197 /* AppDelegate.swift */; };
 		D117B13C2095084300613197 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D117B13B2095084300613197 /* ViewController.swift */; };
 		D117B13F2095084300613197 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D117B13D2095084300613197 /* Main.storyboard */; };
 		D117B1422095084300613197 /* ticket.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D117B1402095084300613197 /* ticket.xcdatamodeld */; };
 		D117B1442095084300613197 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D117B1432095084300613197 /* Assets.xcassets */; };
 		D117B1472095084300613197 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D117B1452095084300613197 /* LaunchScreen.storyboard */; };
+		D1D63FC6209E27C500536DD3 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D63FC5209E27C500536DD3 /* Ticket.swift */; };
+		D1D63FC8209E28E100536DD3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D63FC7209E28E100536DD3 /* User.swift */; };
+		D1D63FCA209E2C2600536DD3 /* TicketUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D63FC9209E2C2600536DD3 /* TicketUpdate.swift */; };
+		D1D63FCC209E34F200536DD3 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D63FCB209E34F200536DD3 /* Repository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D114E9E820964E5C0022ACD6 /* ClientTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientTableViewController.swift; sourceTree = "<group>"; };
+		D114E9E820964E5C0022ACD6 /* TicketsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketsTableViewController.swift; sourceTree = "<group>"; };
 		D117B1362095084300613197 /* ticket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ticket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D117B1392095084300613197 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D117B13B2095084300613197 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -26,6 +30,10 @@
 		D117B1432095084300613197 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D117B1462095084300613197 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D117B1482095084300613197 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D1D63FC5209E27C500536DD3 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
+		D1D63FC7209E28E100536DD3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D1D63FC9209E2C2600536DD3 /* TicketUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketUpdate.swift; sourceTree = "<group>"; };
+		D1D63FCB209E34F200536DD3 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				D117B13B2095084300613197 /* ViewController.swift */,
-				D114E9E820964E5C0022ACD6 /* ClientTableViewController.swift */,
+				D114E9E820964E5C0022ACD6 /* TicketsTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -90,6 +98,10 @@
 		D1E331512095097F00788467 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D1D63FC5209E27C500536DD3 /* Ticket.swift */,
+				D1D63FC7209E28E100536DD3 /* User.swift */,
+				D1D63FC9209E2C2600536DD3 /* TicketUpdate.swift */,
+				D1D63FCB209E34F200536DD3 /* Repository.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -168,8 +180,12 @@
 			files = (
 				D117B13C2095084300613197 /* ViewController.swift in Sources */,
 				D117B1422095084300613197 /* ticket.xcdatamodeld in Sources */,
+				D1D63FC8209E28E100536DD3 /* User.swift in Sources */,
+				D1D63FCC209E34F200536DD3 /* Repository.swift in Sources */,
+				D1D63FC6209E27C500536DD3 /* Ticket.swift in Sources */,
 				D117B13A2095084300613197 /* AppDelegate.swift in Sources */,
-				D114E9E920964E5C0022ACD6 /* ClientTableViewController.swift in Sources */,
+				D114E9E920964E5C0022ACD6 /* TicketsTableViewController.swift in Sources */,
+				D1D63FCA209E2C2600536DD3 /* TicketUpdate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

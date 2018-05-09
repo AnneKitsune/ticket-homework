@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ClientTableViewController : UITableViewController {
+class TicketsTableViewController : UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,24 +28,26 @@ class ClientTableViewController : UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return Repository.shared().tickets.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ticketCell", for: indexPath)
+        let index = indexPath.row
+        let ticket = Repository.shared().tickets[index]
+        let content = ticket.content.prefix(20)
+        cell.textLabel?.text = ticket.title
+        cell.detailTextLabel?.text = String(content)
 
         return cell
     }
-    */
+ 
 
     /*
     // Override to support conditional editing of the table view.
