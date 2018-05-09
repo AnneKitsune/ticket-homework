@@ -7,8 +7,12 @@ package com.jojoalex.ticket.model.dao;
 
 import com.jojoalex.ticket.controller.utils.EncryptionException;
 import com.jojoalex.ticket.controller.utils.EncryptionUtils;
+import com.jojoalex.ticket.model.entities.Ticket;
 import com.jojoalex.ticket.model.entities.User;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -26,17 +30,23 @@ public class UserDAO implements Serializable {
         String encryptPassword = (new EncryptionUtils()).encrypt(password);
 
         User aUser = (User) session.getNamedQuery("findUserByUserNameAndPassword")
-                .setString("userName", userName)
+                .setString("username", userName)
                 .setString("password", encryptPassword)
                 .uniqueResult();
         session.close();
         return aUser;
     }
 
-    public void saveUser(User user) {
-
+    /*public void saveUser(User user) {
         Session session = sessionFactory.openSession();
         session.merge(user);
+        session.flush();
+        session.close();
+    }*/
+    
+    public void createUser(User b) {
+        Session session = sessionFactory.openSession();
+        session.persist(b);
         session.flush();
         session.close();
     }
@@ -47,6 +57,14 @@ public class UserDAO implements Serializable {
 
         session.close();
         return foundUser;
+    }
+    
+    public ArrayList<User> getUsers() {
+        Session session = sessionFactory.openSession();
+        ArrayList<User> ls = (ArrayList<User>)session.createQuery("from User")
+                .list();
+        session.close();
+        return ls;
     }
 
 }

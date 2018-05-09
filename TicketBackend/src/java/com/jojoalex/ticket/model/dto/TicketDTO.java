@@ -30,7 +30,7 @@ public class TicketDTO {
     
     public TicketDTO(Ticket ticket){
         id = ticket.getId();
-        userFor = ticket.getUserByFor().getId();
+        userFor = ticket.getUserByForUser().getId();
         if(ticket.getUserByClosedBy() != null)
             userClosedBy = ticket.getUserByClosedBy().getId();
         if(ticket.getUserByOpenedBy() != null)

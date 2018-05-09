@@ -3,19 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/jojolepro/share/Prog/TicketHomework/TicketBackend/src/java/com/jojoalex/ticket/model/dto/TicketUpdateDTO.java</file>
-            <file>file:/home/jojolepro/share/Prog/TicketHomework/TicketBackend/src/java/com/jojoalex/ticket/model/entities/User.java</file>
-            <file>file:/home/jojolepro/share/Prog/TicketHomework/TicketBackend/web/WEB-INF/web.xml</file>
-            <file>file:/home/jojolepro/share/Prog/TicketHomework/TicketBackend/src/java/com/jojoalex/ticket/model/dao/TicketDAO.java</file>
-            <file>file:/home/jojolepro/share/Prog/TicketHomework/TicketBackend/src/java/com/jojoalex/ticket/model/dto/UserDTO.java</file>
-            <file>file:/home/jojolepro/share/Prog/TicketHomework/TicketBackend/src/java/com/jojoalex/ticket/model/entities/TicketUpdate.java</file>
-            <file>file:/home/jojolepro/share/Prog/TicketHomework/TicketBackend/src/java/com/jojoalex/ticket/controller/utils/TokenStore.java</file>
-            <file>file:/home/jojolepro/share/Prog/TicketHomework/TicketBackend/src/java/com/jojoalex/ticket/model/dao/UserDAO.java</file>
-            <file>file:/home/jojolepro/share/Prog/TicketHomework/TicketBackend/src/java/hibernate.cfg.xml</file>
             <file>file:/home/jojolepro/share/Prog/TicketHomework/TicketBackend/src/java/com/jojoalex/ticket/controller/endpoints/TicketFacadeRest.java</file>
-            <file>file:/home/jojolepro/share/Prog/TicketHomework/TicketBackend/src/java/com/jojoalex/ticket/controller/endpoints/UserFacadeRest.java</file>
-            <file>file:/home/jojolepro/share/Prog/TicketHomework/TicketBackend/src/java/com/jojoalex/ticket/model/dto/TicketDTO.java</file>
-            <file>file:/home/jojolepro/share/Prog/TicketHomework/TicketBackend/src/java/com/jojoalex/ticket/model/entities/Ticket.java</file>
+            <file>file:/home/jojolepro/share/Prog/TicketHomework/TicketBackend/src/java/com/jojoalex/ticket/model/dao/TicketDAO.java</file>
         </group>
     </open-files>
 </project-private>
