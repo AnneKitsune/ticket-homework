@@ -17,6 +17,10 @@ public class User {
     var phone: String
     var tickets: [Int]
     
+    static var Nil: User {
+        return User(id: 0, fullname: "", password: nil, email: "", isAdmin: false, phone: "")
+    }
+    
     public init(id: Int, fullname: String, password: String?, email: String, isAdmin: Bool, phone: String) {
         self.id = id
         self.fullname = fullname

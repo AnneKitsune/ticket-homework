@@ -20,6 +20,9 @@ public class Ticket {
     var forUser: Int
     var ticketUpdates: [TicketUpdate]
     
+    static let priorities: [String] =  ["Critique", "Urgent", "Important"]
+    
+    
     public init(id: Int, title: String, content: String, createdAt: String, closedBy: Int?, openedBy: Int, closedAt: String?, priority: String, forUser: Int) {
         self.id = id
         self.title = title

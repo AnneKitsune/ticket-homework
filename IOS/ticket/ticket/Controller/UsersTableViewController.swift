@@ -1,21 +1,21 @@
 //
-//  UserTableTableViewController.swift
+//  UsersTableViewController.swift
 //  ticket
 //
-//  Created by Alexis Diamond on 2018-04-29.
+//  Created by admin on 5/9/18.
 //  Copyright © 2018 Alexis Diamond. All rights reserved.
 //
 
 import UIKit
 
-class TicketsTableViewController : UITableViewController {
-    
-    var tickets:[Ticket] = [Ticket]()
+class UsersTableViewController: UITableViewController {
+
+    var users: [User] = [User]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tickets = Repository.shared().tickets
+        users = Repository.shared().clients
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -31,45 +31,29 @@ class TicketsTableViewController : UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return tickets.count
+        return users.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ticketCell", for: indexPath)
-        let index = indexPath.row
-        let ticket = tickets[index]
-        let content = "\(ticket.content.prefix(20))..."
-        cell.textLabel?.text = ticket.title
-        cell.detailTextLabel?.text = String(content)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath)
 
-        let color = cellColor(prior: ticket.priority)
-        
-        cell.backgroundColor = color
-        
+        let index = indexPath.row
+        let user = users[index]
+        let content = user.fullname
+        cell.textLabel?.text = content
+        cell.detailTextLabel?.text = user.email
+        print(user.fullname)
+
         return cell
     }
     
-    private func cellColor(prior: String) -> UIColor {
-        switch(prior) {
-        case "Important":
-            return UIColor.green
-            
-        case "Critique":
-            return UIColor.red
-            
-        case "Urgent":
-            return UIColor.yellow
-            
-        default: return UIColor.green
-        }
-    }
- 
 
     /*
     // Override to support conditional editing of the table view.
