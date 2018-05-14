@@ -27,6 +27,12 @@ import javax.persistence.TemporalType;
 @Table(name="Ticket"
     ,catalog="tickets"
 )
+@NamedQueries({
+    @NamedQuery(
+            name = "findTicketById",
+            query = "from Ticket t where t.id = :id"
+    )
+})
 public class Ticket  implements java.io.Serializable {
 
 

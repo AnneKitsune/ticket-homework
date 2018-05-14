@@ -164,7 +164,7 @@ public class TicketFacadeRest {
     
     @POST
     @Path("postmsg")
-    public void createTicketMsg(@Context HttpServletRequest req,@FormParam("content") String content,@FormParam("ticketid") int ticketid){
+    public String createTicketMsg(@Context HttpServletRequest req,@FormParam("content") String content,@FormParam("ticketid") int ticketid){
         User u = TokenStore.userFromRequest(req);
         if(u != null){
             TicketUpdate t = new TicketUpdate();
@@ -172,6 +172,8 @@ public class TicketFacadeRest {
             t.setCreatedAt(Date.from(Calendar.getInstance().toInstant()));
             t.setUser(u);
             ticketDAO.createTicketUpdate(t, ticketid);
+            return "OK";
         }
+        return "Not Authorized";
     }
 }
