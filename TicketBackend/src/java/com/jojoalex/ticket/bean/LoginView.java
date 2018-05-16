@@ -13,6 +13,8 @@ import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
@@ -21,8 +23,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Alexis-Laptop
  */
-@Named(value = "loginview")
-@Dependent
+@ManagedBean(name = "loginview")
 @ViewScoped
 public class LoginView {
 
@@ -40,6 +41,10 @@ public class LoginView {
     }
     
     public String connect() {
+        
+        //FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "USername: " + username, ""));
+        //return "login";
+        //*
         try {
             User aUser = userDAO.getUserByUserNameAndPassword(username, password);
             //System.out.println(aUser.getFullname());
@@ -55,6 +60,7 @@ public class LoginView {
            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Échec de la connexion", "Problem de lors de l'encodage du mot de passe"));
         }
         return "login";
+        //*/
     }
 
     public String getUsername() {
