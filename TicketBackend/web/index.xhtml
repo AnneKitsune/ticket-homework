@@ -9,43 +9,29 @@
         <h:head>
             <f:facet name="first">
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-                <title>PrimeFaces</title>
+                <title>Index</title>
             </f:facet>
         </h:head>
 
         <h:body>
+            <h:form id="form">
+                <p:dataTable var="ticket" value="#{ticketView.tickets}" rowIndexVar="row">
+                    <p:column headerText="ID">
+                        <h:outputText value="#{ticket.id}" />
+                    </p:column>
 
-            <p:layout fullPage="true">
+                    <p:column headerText="Title">
+                        <h:outputText value="#{ticket.title}" />
+                    </p:column>
 
-                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
-                    Header
-                </p:layoutUnit>
+                    <p:column headerText="Content">
+                        <h:outputText value="#{ticket.content}" />
+                    </p:column>
 
-                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
-                    Footer
-                </p:layoutUnit>
-
-                <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
-                    <p:menu>
-                        <p:submenu label="Resources">
-                            <p:menuitem value="Demo" url="http://www.primefaces.org/showcase-labs/ui/home.jsf" />
-                            <p:menuitem value="Documentation" url="http://www.primefaces.org/documentation.html" />
-                            <p:menuitem value="Forum" url="http://forum.primefaces.org/" />
-                            <p:menuitem value="Themes" url="http://www.primefaces.org/themes.html" />
-
-                        </p:submenu>
-
-                    </p:menu>
-                </p:layoutUnit>
-
-                <p:layoutUnit position="center">
-                    Welcome to PrimeFaces
-                </p:layoutUnit>
-
-            </p:layout>
-
+                </p:dataTable>
+            </h:form>
+            
         </h:body>
-
     </f:view>
 </html>
 

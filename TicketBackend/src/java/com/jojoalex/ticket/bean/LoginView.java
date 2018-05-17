@@ -18,6 +18,7 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
+import org.jboss.logging.Logger;
 
 /**
  *
@@ -49,16 +50,21 @@ public class LoginView {
             User aUser = userDAO.getUserByUserNameAndPassword(username, password);
             //System.out.println(aUser.getFullname());
             if (aUser != null) {
+                System.out.println("good");
                 HttpSession session = SessionUtils.getSession();
+                System.out.println("good");
                 session.setAttribute("user", aUser);
+                System.out.println("Good");
+                FacesContext.getCurrentInstance().getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "index.xhtml");
                 return "index?faces-redirect=true";
             } else {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Échec de la connexion", "Mauvais nom d'utilisateur ou mot de passe"));
-
             }
         } catch (EncryptionException ex) {
            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Échec de la connexion", "Problem de lors de l'encodage du mot de passe"));
+            System.out.println("Erreur d'encryption");
         }
+        System.out.println("passe");
         return "login";
         //*/
     }

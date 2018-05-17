@@ -33,7 +33,7 @@ public class TicketDAO implements Serializable {
     public ArrayList<Ticket> findListOfTickets() {
         Session session = sessionFactory.openSession();
         ArrayList<Ticket> listOfTickets = (ArrayList<Ticket>)session.getNamedQuery("findAllTickets")
-                .list();
+            .list();
         session.close();
         return listOfTickets;
     }
