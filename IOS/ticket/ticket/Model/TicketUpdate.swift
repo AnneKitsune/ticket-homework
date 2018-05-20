@@ -9,17 +9,38 @@
 import Foundation
 
 public class TicketUpdate {
-    var id: Int
-    var ticket: Int
-    var content: String
-    var user: Int
-    var createdAt: String
+    var id: Int?
+    var ticket: Int?
+    var content: String?
+    var user: Int?
+    var createdAt: String?
     
-    public init(id: Int, ticket: Int, content: String, user: Int, createdAt: String) {
-        self.id = id
-        self.ticket = ticket
-        self.content = content
-        self.user = user
-        self.createdAt = createdAt
+    static var Nil: TicketUpdate {
+        get {
+            let ticketUpdate = TicketUpdate.buildFromParam(id: 0, ticket: 0, content: "NotFound", user: 0, createdAt: "")
+            
+            return ticketUpdate
+        }
+    }
+    
+    public init() {
+    }
+    
+    public static func buildFromJSON() -> TicketUpdate {
+        let ticketUpdate = TicketUpdate()
+        return ticketUpdate
+    }
+    
+    public static func buildFromParam(id: Int?, ticket: Int?, content: String?, user: Int?, createdAt: String?) -> TicketUpdate {
+        
+        let ticketUpdate = TicketUpdate()
+        
+        ticketUpdate.id = id
+        ticketUpdate.ticket = ticket
+        ticketUpdate.content = content
+        ticketUpdate.user = user
+        ticketUpdate.createdAt = createdAt
+        
+        return ticketUpdate
     }
 }

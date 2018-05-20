@@ -106,14 +106,21 @@ class TicketsTableViewController : UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let cell = sender as? UITableViewCell
+        let index = tableView.indexPath(for: cell!)?.row
+        let destination = segue.destination as? TicketDetailViewController
+        let data = tickets[index!]
+        destination?.ticket = data
+        
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
 }

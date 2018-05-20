@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E707C5020B1BD6000E70A61 /* TicketDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E707C4F20B1BD6000E70A61 /* TicketDetailViewController.swift */; };
+		5E707C5520B1D5E200E70A61 /* InMemoryDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E707C5420B1D5E200E70A61 /* InMemoryDAO.swift */; };
+		5E707C5720B1D64F00E70A61 /* IDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E707C5620B1D64F00E70A61 /* IDAO.swift */; };
+		5E707C5920B1E8C400E70A61 /* HttpDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E707C5820B1E8C400E70A61 /* HttpDAO.swift */; };
 		8452BB7120A364E8008D74E0 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8452BB7020A364E8008D74E0 /* UsersTableViewController.swift */; };
 		8452BB7420A3772F008D74E0 /* NewTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8452BB7320A3772F008D74E0 /* NewTicketViewController.swift */; };
 		8452BB7620A388BD008D74E0 /* NewClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8452BB7520A388BD008D74E0 /* NewClientViewController.swift */; };
@@ -24,6 +28,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5E707C4F20B1BD6000E70A61 /* TicketDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketDetailViewController.swift; sourceTree = "<group>"; };
+		5E707C5420B1D5E200E70A61 /* InMemoryDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryDAO.swift; sourceTree = "<group>"; };
+		5E707C5620B1D64F00E70A61 /* IDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDAO.swift; sourceTree = "<group>"; };
+		5E707C5820B1E8C400E70A61 /* HttpDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpDAO.swift; sourceTree = "<group>"; };
 		8452BB7020A364E8008D74E0 /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		8452BB7320A3772F008D74E0 /* NewTicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTicketViewController.swift; sourceTree = "<group>"; };
 		8452BB7520A388BD008D74E0 /* NewClientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewClientViewController.swift; sourceTree = "<group>"; };
@@ -53,6 +61,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5E707C5120B1BD6C00E70A61 /* Ticket */ = {
+			isa = PBXGroup;
+			children = (
+				8452BB7320A3772F008D74E0 /* NewTicketViewController.swift */,
+				D114E9E820964E5C0022ACD6 /* TicketsTableViewController.swift */,
+				5E707C4F20B1BD6000E70A61 /* TicketDetailViewController.swift */,
+			);
+			name = Ticket;
+			sourceTree = "<group>";
+		};
+		5E707C5220B1BD7B00E70A61 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				8452BB7020A364E8008D74E0 /* UsersTableViewController.swift */,
+				8452BB7520A388BD008D74E0 /* NewClientViewController.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		5E707C5320B1D5D100E70A61 /* DAO */ = {
+			isa = PBXGroup;
+			children = (
+				5E707C5420B1D5E200E70A61 /* InMemoryDAO.swift */,
+				5E707C5620B1D64F00E70A61 /* IDAO.swift */,
+				5E707C5820B1E8C400E70A61 /* HttpDAO.swift */,
+			);
+			path = DAO;
+			sourceTree = "<group>";
+		};
+		5E707C5A20B206A200E70A61 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		D117B12D2095084300613197 = {
 			isa = PBXGroup;
 			children = (
@@ -72,6 +116,7 @@
 		D117B1382095084300613197 /* ticket */ = {
 			isa = PBXGroup;
 			children = (
+				5E707C5A20B206A200E70A61 /* Service */,
 				D1E331512095097F00788467 /* Model */,
 				D1E331502095097600788467 /* Controller */,
 				D1E3314F2095096500788467 /* View */,
@@ -95,11 +140,9 @@
 		D1E331502095097600788467 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				5E707C5220B1BD7B00E70A61 /* User */,
+				5E707C5120B1BD6C00E70A61 /* Ticket */,
 				D117B13B2095084300613197 /* ViewController.swift */,
-				D114E9E820964E5C0022ACD6 /* TicketsTableViewController.swift */,
-				8452BB7020A364E8008D74E0 /* UsersTableViewController.swift */,
-				8452BB7320A3772F008D74E0 /* NewTicketViewController.swift */,
-				8452BB7520A388BD008D74E0 /* NewClientViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -107,6 +150,7 @@
 		D1E331512095097F00788467 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5E707C5320B1D5D100E70A61 /* DAO */,
 				D1D63FC5209E27C500536DD3 /* Ticket.swift */,
 				D1D63FC7209E28E100536DD3 /* User.swift */,
 				D1D63FC9209E2C2600536DD3 /* TicketUpdate.swift */,
@@ -187,16 +231,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E707C5720B1D64F00E70A61 /* IDAO.swift in Sources */,
 				D117B13C2095084300613197 /* ViewController.swift in Sources */,
 				8452BB7420A3772F008D74E0 /* NewTicketViewController.swift in Sources */,
 				D117B1422095084300613197 /* ticket.xcdatamodeld in Sources */,
 				8452BB7120A364E8008D74E0 /* UsersTableViewController.swift in Sources */,
+				5E707C5520B1D5E200E70A61 /* InMemoryDAO.swift in Sources */,
+				5E707C5920B1E8C400E70A61 /* HttpDAO.swift in Sources */,
 				D1D63FC8209E28E100536DD3 /* User.swift in Sources */,
 				D1D63FCC209E34F200536DD3 /* Repository.swift in Sources */,
 				D1D63FC6209E27C500536DD3 /* Ticket.swift in Sources */,
 				D117B13A2095084300613197 /* AppDelegate.swift in Sources */,
 				D114E9E920964E5C0022ACD6 /* TicketsTableViewController.swift in Sources */,
 				D1D63FCA209E2C2600536DD3 /* TicketUpdate.swift in Sources */,
+				5E707C5020B1BD6000E70A61 /* TicketDetailViewController.swift in Sources */,
 				8452BB7620A388BD008D74E0 /* NewClientViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
