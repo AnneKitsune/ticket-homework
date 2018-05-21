@@ -15,7 +15,7 @@ class TicketsTableViewController : UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tickets = Repository.shared().tickets
+        tickets = Repository.shared().openedTickets
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -44,11 +44,11 @@ class TicketsTableViewController : UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ticketCell", for: indexPath)
         let index = indexPath.row
         let ticket = tickets[index]
-        let content = "\(ticket.content.prefix(20))..."
+        let content = "\(ticket.content!.prefix(20))..."
         cell.textLabel?.text = ticket.title
         cell.detailTextLabel?.text = String(content)
 
-        let color = cellColor(prior: ticket.priority)
+        let color = cellColor(prior: ticket.priority!)
         
         cell.backgroundColor = color
         
@@ -112,14 +112,22 @@ class TicketsTableViewController : UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let cell = sender as? UITableViewCell
-        let index = tableView.indexPath(for: cell!)?.row
-        let destination = segue.destination as? TicketDetailViewController
-        let data = tickets[index!]
-        destination?.ticket = data
-        
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let identifier = segue.identifier
+        if(identifier == "ticketDetailSegue") {
+            let cell = sender as? UITableViewCell
+            let index = tableView.indexPath(for: cell!)?.row
+            let destination = segue.destination as? TicketDetailViewController
+            let data = tickets[index!]
+            destination?.ticket = data
+        }
+        else if(identifier == "newTicketSegue") {
+            // Do thing to create new ticket?
+        }
+        else {
+            let alert = UIAlertController(title: "Error", message: "Unknown error", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
     }
     
 

@@ -64,6 +64,22 @@ public class Repository {
         return currentDAO.getTicketById(ticketId: ticketId)
     }
     
+    func login(username: String, password: String) -> User? {
+        return currentDAO.login(username: username, password: password)
+    }
+    
+    func createTicket(ticket: Ticket) {
+        currentDAO.createTicket(ticket: ticket)
+    }
+    
+    func closeTicket(ticketId: Int) {
+        currentDAO.closeTicket(ticketId: ticketId)
+    }
+    
+    func getUser(userId: Int) -> User {
+        return currentDAO.getUser(userId: userId)
+    }
+    
     private static var sharedRepository: Repository = {
         let repository = Repository()
         

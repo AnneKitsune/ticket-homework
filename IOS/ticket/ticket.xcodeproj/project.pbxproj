@@ -11,6 +11,8 @@
 		5E707C5520B1D5E200E70A61 /* InMemoryDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E707C5420B1D5E200E70A61 /* InMemoryDAO.swift */; };
 		5E707C5720B1D64F00E70A61 /* IDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E707C5620B1D64F00E70A61 /* IDAO.swift */; };
 		5E707C5920B1E8C400E70A61 /* HttpDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E707C5820B1E8C400E70A61 /* HttpDAO.swift */; };
+		5E707C5C20B2075200E70A61 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E707C5B20B2075200E70A61 /* AuthService.swift */; };
+		5E707C5E20B2516F00E70A61 /* ClientDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E707C5D20B2516F00E70A61 /* ClientDetailsViewController.swift */; };
 		8452BB7120A364E8008D74E0 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8452BB7020A364E8008D74E0 /* UsersTableViewController.swift */; };
 		8452BB7420A3772F008D74E0 /* NewTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8452BB7320A3772F008D74E0 /* NewTicketViewController.swift */; };
 		8452BB7620A388BD008D74E0 /* NewClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8452BB7520A388BD008D74E0 /* NewClientViewController.swift */; };
@@ -32,6 +34,8 @@
 		5E707C5420B1D5E200E70A61 /* InMemoryDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryDAO.swift; sourceTree = "<group>"; };
 		5E707C5620B1D64F00E70A61 /* IDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDAO.swift; sourceTree = "<group>"; };
 		5E707C5820B1E8C400E70A61 /* HttpDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpDAO.swift; sourceTree = "<group>"; };
+		5E707C5B20B2075200E70A61 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		5E707C5D20B2516F00E70A61 /* ClientDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientDetailsViewController.swift; sourceTree = "<group>"; };
 		8452BB7020A364E8008D74E0 /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		8452BB7320A3772F008D74E0 /* NewTicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTicketViewController.swift; sourceTree = "<group>"; };
 		8452BB7520A388BD008D74E0 /* NewClientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewClientViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +80,7 @@
 			children = (
 				8452BB7020A364E8008D74E0 /* UsersTableViewController.swift */,
 				8452BB7520A388BD008D74E0 /* NewClientViewController.swift */,
+				5E707C5D20B2516F00E70A61 /* ClientDetailsViewController.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -93,6 +98,7 @@
 		5E707C5A20B206A200E70A61 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				5E707C5B20B2075200E70A61 /* AuthService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -244,8 +250,10 @@
 				D117B13A2095084300613197 /* AppDelegate.swift in Sources */,
 				D114E9E920964E5C0022ACD6 /* TicketsTableViewController.swift in Sources */,
 				D1D63FCA209E2C2600536DD3 /* TicketUpdate.swift in Sources */,
+				5E707C5E20B2516F00E70A61 /* ClientDetailsViewController.swift in Sources */,
 				5E707C5020B1BD6000E70A61 /* TicketDetailViewController.swift in Sources */,
 				8452BB7620A388BD008D74E0 /* NewClientViewController.swift in Sources */,
+				5E707C5C20B2075200E70A61 /* AuthService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

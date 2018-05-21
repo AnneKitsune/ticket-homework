@@ -90,14 +90,31 @@ class UsersTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let identifier = segue.identifier
+        if(identifier == "clientDetailsSegue") {
+            let cell = sender as? UITableViewCell
+            let index = tableView.indexPath(for: cell!)?.row
+            let destination = segue.destination as? ClientDetailsViewController
+            let data = users[index!]
+            destination?.client = data
+        }
+        else if(identifier == "newClientSegue") {
+            // Do thing to create new ticket?
+        }
+        else {
+            let alert = UIAlertController(title: "Error", message: "Unknown error", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
 }

@@ -35,7 +35,7 @@ public class Ticket {
         self.ticketUpdates = [Int]()
     }
     
-    public static func buildFromParam(id: Int?, title: String?, content: String?, createdAt: String?, closedBy: Int?, openedBy: Int?, closedAt: String?, priority: String?, forUser: Int?) -> Ticket {
+    public static func buildFromParam(id: Int?, title: String?, content: String?, createdAt: String?, closedBy: Int?, openedBy: Int?, closedAt: String?, priority: String?, forUser: Int?, ticketUpdates: [Int]) -> Ticket {
         let ticket = Ticket()
         ticket.id = id
         ticket.title = title
@@ -46,7 +46,7 @@ public class Ticket {
         ticket.closedBy = closedBy
         ticket.priority = priority
         ticket.forUser = forUser
-        
+        ticket.ticketUpdates = ticketUpdates
         return ticket
     }
     

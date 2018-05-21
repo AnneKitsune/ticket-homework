@@ -51,30 +51,58 @@ public class HttpDAO: IDAO {
         }
     }
     
-    public var openedTicket: [Ticket]
+    public var openedTicket: [Ticket] {
+        get {
+            return []
+        }
+    }
     
-    public var closedTicket: [Ticket]
+    public var closedTicket: [Ticket] {
+        get {
+            return []
+        }
+    }
     
-    public var users: [User]
+    public var users: [User] {
+        get {
+            return []
+        }
+    }
     
-    public var clients: [User]
+    public var clients: [User] {
+        get {
+            return []
+        }
+    }
     
-    public var workers: [User]
+    public var workers: [User] {
+        get {
+            return []
+        }
+    }
     
     public func getTicketsForCustomer(customerId: Int) -> [Ticket] {
-        <#code#>
+        return []
     }
     
     public func getTicketsByEmployee(employeeId: Int) -> [Ticket] {
-        <#code#>
+        return []
     }
     
     public func getTicketUpdateByTicket(ticketId: Int) -> [TicketUpdate] {
-        <#code#>
+        return []
     }
     
     public func getTicketById(ticketId: Int) -> Ticket {
-        <#code#>
+        return Ticket.Nil
+    }
+    
+    public func login(username: String, password: String) -> User? {
+        return nil
+    }
+    
+    public func createTicket(ticket: Ticket) {
+        
     }
     
     public init() {}
@@ -95,5 +123,13 @@ public class HttpDAO: IDAO {
         }
         
         return request
+    }
+    
+    public func closeTicket(ticketId: Int){
+        
+    }
+    
+    public func getUser(userId: Int) -> User {
+        return User.Nil
     }
 }

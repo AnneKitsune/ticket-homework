@@ -28,24 +28,28 @@ class ViewController: UIViewController {
 
 
     @IBAction func onConnect(_ sender: Any) {
-        let uname = usernameInput.text!
-        let upassword = passwordInput.text!
-        if !uname.isEmpty && !upassword.isEmpty {
-            if uname == "admin" && upassword == "admin" {
-                // TODO: Verify for valid credential
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabbarController") as! UITabBarController
-                present(vc, animated: true, completion: nil)
-                
-            }
-            else {
-                let alert = UIAlertController(title: "Erreur", message: "Le nom d'utilisateur ou le mot de passe doivent être 'admin'", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-                present(alert, animated: true, completion: nil)
-            }
+        
+        let alert = UIAlertController(title: "Error", message: "Either username or password are incorrect", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        
+        guard let username = usernameInput.text else {
+            alert.title = "Username must not be empty"
+            present(alert, animated: true, completion: nil)
+            return
+        }
+        guard let password = passwordInput.text else {
+            alert.title = "Password must not be empty"
+            present(alert, animated: true, completion: nil)
+            return
+        }
+        
+        let correctLogin = AuthService.login(username: username, password: password)
+        
+        if correctLogin {
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabbarController") as! UITabBarController
+            present(vc, animated: true, completion: nil)
         }
         else {
-            let alert = UIAlertController(title: "Erreur", message: "Le nom d'utilisateur ou le mot de passe doivent être remplis", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
         }
     }

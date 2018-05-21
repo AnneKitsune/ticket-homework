@@ -20,5 +20,8 @@ public protocol IDAO {
     func getTicketsByEmployee(employeeId: Int) -> [Ticket]
     func getTicketUpdateByTicket(ticketId: Int) -> [TicketUpdate]
     func getTicketById(ticketId: Int) -> Ticket
-    
+    func login(username: String, password: String) -> User?
+    func createTicket(ticket: Ticket)
+    func closeTicket(ticketId: Int)
+    func getUser(userId: Int) -> User
 }

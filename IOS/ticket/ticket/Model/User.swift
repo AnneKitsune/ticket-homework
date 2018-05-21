@@ -15,7 +15,7 @@ public class User {
     var email: String?
     var isAdmin: Bool?
     var phone: String?
-    var tickets: [Ticket]
+    var tickets: [Int]
     
     static var Nil: User {
         get {
@@ -42,6 +42,18 @@ public class User {
         user.password = password
         user.phone = phone
         user.email = email
+        return user
+    }
+    
+    public static func buildFromParam(id: Int?, fullname: String?, password: String?, email: String?, isAdmin: Bool?, phone: String?, tickets: [Int]) -> User {
+        let user = User()
+        user.id = id
+        user.fullname = fullname
+        user.isAdmin = isAdmin
+        user.password = password
+        user.phone = phone
+        user.email = email
+        user.tickets = tickets
         return user
     }
 }

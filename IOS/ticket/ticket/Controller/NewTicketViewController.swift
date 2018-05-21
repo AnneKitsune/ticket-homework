@@ -50,8 +50,8 @@ class NewTicketViewController: UIViewController, UIPickerViewDataSource, UIPicke
     
     @IBAction func save(_ sender: Any) {
         // TODO: Update restriction
-        let ticket = Ticket(id: 0, title: (titletf?.text)!, content: (content?.text)!, createdAt: openedAt.text!, closedBy: nil, openedBy: 2, closedAt: nil, priority: priority.text!, forUser: user.id)
-        Repository.shared().tickets.append(ticket)
+        let ticket = Ticket.buildFromParam(id: 0, title: (titletf?.text)!, content: (content?.text)!, createdAt: openedAt.text!, closedBy: nil, openedBy: 2, closedAt: nil, priority: priority.text!, forUser: user.id, ticketUpdates: [])
+        Repository.shared().createTicket(ticket: ticket)
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "TicketNavController") as! UINavigationController
         present(vc, animated: true, completion: nil)
