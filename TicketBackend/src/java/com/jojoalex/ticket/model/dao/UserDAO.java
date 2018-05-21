@@ -46,7 +46,9 @@ public class UserDAO implements Serializable {
     
     public void createUser(User b) {
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.persist(b);
+        session.getTransaction().commit();
         session.flush();
         session.close();
     }

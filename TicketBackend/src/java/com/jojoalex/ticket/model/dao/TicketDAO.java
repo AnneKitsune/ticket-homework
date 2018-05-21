@@ -33,7 +33,7 @@ public class TicketDAO implements Serializable {
     public ArrayList<Ticket> findListOfTickets() {
         Session session = sessionFactory.openSession();
         ArrayList<Ticket> listOfTickets = (ArrayList<Ticket>)session.getNamedQuery("findAllTickets")
-                .list();
+            .list();
         session.close();
         return listOfTickets;
     }
@@ -61,15 +61,18 @@ public class TicketDAO implements Serializable {
     public void createTicketUpdate(TicketUpdate t, int ticketid) {
         Session session = sessionFactory.openSession();
         t.setTicket((Ticket)session.load(Ticket.class,ticketid));
-        
+        session.beginTransaction();
         session.persist(t);
+        session.getTransaction().commit();
         session.flush();
         session.close();
     }
     
     public void updateTicket(Ticket t) {
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.merge(t);
+        session.getTransaction().commit();
         session.flush();
         session.close();
     }

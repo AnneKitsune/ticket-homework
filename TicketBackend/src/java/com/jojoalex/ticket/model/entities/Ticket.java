@@ -2,6 +2,9 @@ package com.jojoalex.ticket.model.entities;
 // Generated 7-May-2018 1:30:40 PM by Hibernate Tools 4.3.1
 
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -27,6 +30,16 @@ import javax.persistence.TemporalType;
 @Table(name="Ticket"
     ,catalog="tickets"
 )
+@NamedQueries({
+    @NamedQuery(
+        name = "findTicketById",
+        query = "from Ticket t where t.id = :id"
+    ),
+    @NamedQuery(
+        name = "findAllTickets",
+        query = "from Ticket"
+    )
+})
 public class Ticket  implements java.io.Serializable {
 
 
@@ -165,8 +178,6 @@ public class Ticket  implements java.io.Serializable {
     public void setTicketUpdates(Set<TicketUpdate> ticketUpdates) {
         this.ticketUpdates = ticketUpdates;
     }
-
-
 
 
 }
